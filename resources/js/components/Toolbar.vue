@@ -2,18 +2,22 @@
     <v-toolbar>
         <v-toolbar-title>Forum</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-toolbar-items>
-            <v-btn text>Forum</v-btn>
+        <div>
+            <router-link to="/">
+                <v-btn text>Forum</v-btn>
+            </router-link>
             <v-btn text>Ask Question</v-btn>
             <v-btn text>Category</v-btn>
-            <v-btn text>Login</v-btn>
-        </v-toolbar-items>
+            <router-link to="/login">
+                <v-btn text>Login</v-btn>
+            </router-link>
+        </div>
     </v-toolbar>
 </template>
 
 <script>
     export default {
-        name: "Toolbar"
+        name: 'Toolbar'
     }
 </script>
 
