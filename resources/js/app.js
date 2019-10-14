@@ -7,7 +7,23 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+
+import Vue from 'vue'
+import Vuetify from 'vuetify'
+import router from './Router/router.js'
+
+
+Vue.use(Vuetify);
+import 'vuetify/dist/vuetify.min.css'
+
+window.EventBus = new Vue();
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,8 +31,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('AppHome', require('./components/AppHome.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router,
+    vuetify: new Vuetify()
 });
