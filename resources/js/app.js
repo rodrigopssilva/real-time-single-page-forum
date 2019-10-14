@@ -12,10 +12,11 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 import router from './Router/router.js'
 
-
 Vue.use(Vuetify);
 import 'vuetify/dist/vuetify.min.css'
 
+import User from './Helpers/User'
+window.User = User
 window.EventBus = new Vue();
 /**
  * The following block of code may be used to automatically register your
@@ -36,5 +37,6 @@ Vue.component('AppHome', require('./components/AppHome.vue'));
 const app = new Vue({
     el: '#app',
     router,
+    User,
     vuetify: new Vuetify()
 });
