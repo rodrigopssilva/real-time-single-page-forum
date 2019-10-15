@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'title',
+        'slug',
+        'body',
+        'category_id',
+        'user_id',
+    ];
 
     public function getRouteKeyName()
     {

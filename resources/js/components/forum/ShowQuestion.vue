@@ -15,10 +15,10 @@
             </v-card-title>
             <v-card-text v-html="body"></v-card-text>
             <v-card-actions v-if="own">
-                <v-btn icon small>
+                <v-btn icon small @click="edit">
                     <v-icon color="orange">edit</v-icon>
                 </v-btn>
-                <v-btn icon small>
+                <v-btn icon small @click="destroy">
                     <v-icon color="red">delete</v-icon>
                 </v-btn>
             </v-card-actions>
@@ -37,7 +37,17 @@
         props: ['data'],
         computed: {
             body() {
-                return md.parse(this.data.body)
+                return md.parse(this.data.body);
+            }
+        },
+        methods: {
+            destroy() {
+                axios.delete('/api/question/' + this.data.slug)
+                    .then(response => this.$router.push({name:'forum'}))
+                    .catch(error => console.log(error.response.data));
+            },
+            edit() {
+                EventBus.$emit('startEditing')
             }
         }
     }
