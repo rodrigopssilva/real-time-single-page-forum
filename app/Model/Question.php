@@ -31,6 +31,15 @@ class Question extends Model
 
     public function getPathAttribute()
     {
-        return asset('api/question/' . $this->slug);
+        return '/question/' . $this->slug;
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::creating(function($question) {
+            $question->slug = str_slug($question->title);
+        });
     }
 }

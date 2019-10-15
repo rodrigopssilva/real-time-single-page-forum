@@ -11,12 +11,18 @@ require('./bootstrap');
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import router from './Router/router.js'
-
 Vue.use(Vuetify);
+
 import 'vuetify/dist/vuetify.min.css'
 
+import VueSimplemde from 'vue-simplemde'
+Vue.component('vue-simplemde', VueSimplemde);
+
+import md from 'marked';
+window.md = md;
+
 import User from './Helpers/User'
-window.User = User
+window.User = User;
 window.EventBus = new Vue();
 /**
  * The following block of code may be used to automatically register your
