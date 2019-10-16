@@ -42,7 +42,7 @@ class CategoryController extends Controller
         $category->name = $data['name'];
         $category->slug = $data['slug'];
         $category->save();
-        return response('Created', Response::HTTP_CREATED);
+        return response(new CategoryResource($category), Response::HTTP_CREATED);
     }
 
     private function treatCategory(Request $request)
@@ -74,7 +74,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->update($this->treatCategory($request));
-        return response('Updated', Response::HTTP_ACCEPTED);
+        return response(new CategoryResource($category), Response::HTTP_ACCEPTED);
     }
 
     /**

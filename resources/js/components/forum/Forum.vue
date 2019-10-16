@@ -7,13 +7,16 @@
                 :data="question"
                 ></question>
             </v-flex>
-            Sidebar
+            <v-flex xs4>
+                <app-sidebar></app-sidebar>
+            </v-flex>
         </v-layout>
     </v-container>
 </template>
 
 <script>
     import Question from './Question';
+    import AppSidebar from './AppSidebar';
     export default {
         data() {
             return {
@@ -25,7 +28,7 @@
                 .then(response => this.questions = response.data.data)
                 .catch(error => console.log(error.response.data));
         },
-        components: {Question},
+        components: {AppSidebar, Question},
     }
 </script>
 
