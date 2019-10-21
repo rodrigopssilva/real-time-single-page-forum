@@ -99,6 +99,10 @@
             },
         },
         created() {
+            if (!User.admin()) {
+                this.$router.push({name:'forum'});
+            }
+
             axios.get('/api/category')
                 .then(response => this.categories = response.data.data);
         }
