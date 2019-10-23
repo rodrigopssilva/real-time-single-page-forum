@@ -22,12 +22,13 @@
                 let url = '/api/question/' + this.reply.question_slug + '/reply/' + this.reply.id;
                 axios.patch(url, {body: this.reply.reply})
                     .then(response => {
-                        this.cancel();
+                        this.cancel(this.reply.reply);
                     })
                     .catch(error => console.log(error.response.data));
             },
-            cancel() {
-                EventBus.$emit('cancelEditing');
+            cancel(reply) {
+                EventBus.$emit('cancelEditing', reply);
+                this.data.reply = this.beforeEditReplyBody;
             },
         }
     }

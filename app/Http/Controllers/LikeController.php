@@ -27,8 +27,7 @@ class LikeController extends Controller
     public function likeIt(Reply $reply)
     {
         $reply->like()->create([
-//            auth()->id()
-            'user_id' => 1
+            'user_id' => auth()->id()
         ]);
 
         return response('Created', Response::HTTP_CREATED);
@@ -43,7 +42,7 @@ class LikeController extends Controller
     {
         $reply
             ->like()
-            ->where(['user_id' => 1])
+            ->where('user_id', auth()->id())
             ->first()
             ->delete();
 
